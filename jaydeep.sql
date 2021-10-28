@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2021 at 02:47 PM
+-- Generation Time: Oct 28, 2021 at 03:47 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Eigth`
+--
+
+CREATE TABLE `Eigth` (
+  `ID` int(11) NOT NULL,
+  `Name` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `contact` int(11) NOT NULL,
+  `address` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Eigth`
+--
+
+INSERT INTO `Eigth` (`ID`, `Name`, `email`, `contact`, `address`) VALUES
+(12, 123, 1231, 45, 234),
+(123, 2134, 545, 5324, 45),
+(123412, 43434314, 34134, 34134, 1343),
+(34134, 1343, 134, 3141, 134),
+(134, 34, 123434, 134, 134),
+(134, 35245, 134, 5254, 2354254);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fifth`
 --
 
@@ -34,6 +60,20 @@ CREATE TABLE `fifth` (
   `contact` bigint(10) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fifth`
+--
+
+INSERT INTO `fifth` (`SR.no`, `Name`, `role`, `contact`, `email`) VALUES
+(1, 'sfgedg', 'etghetg', 12, 'sfgwergetg'),
+(2, 'sfgerg', 'rtgwrt', 1, 'dfgsgrae'),
+(3, 'efgeatg', 'dghsd', 12, 'rwfgwerfg'),
+(21, 'etge', 'ertge', 12, 'efgerg'),
+(2, 'aefaef', 'efqae', 12, 'aedfef'),
+(12, 'efwf', 'erferwf', 34, 'edfwff'),
+(12, 'dfweferf', 'efef', 21, 'vfsfgv'),
+(545, 'rfgwsrg', 'rtgfwrt', 65, 'rgertgtrg');
 
 -- --------------------------------------------------------
 
@@ -48,6 +88,36 @@ CREATE TABLE `fourth` (
   `sfhiogi` int(14) NOT NULL,
   `djofhiu` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nine`
+--
+
+CREATE TABLE `nine` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(15) NOT NULL,
+  `country` varchar(15) NOT NULL,
+  `state` varchar(15) NOT NULL,
+  `city` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nine`
+--
+
+INSERT INTO `nine` (`ID`, `Name`, `country`, `state`, `city`) VALUES
+(212, 'erqee', 'weqwer', 'qewdfqe', 'qefe'),
+(2, 'dfsdf', 'edfwef', 'efef', 'eferf'),
+(12, 'efwef', 'efef', 'efwqef', 'efwef'),
+(1, 'defwef', 'efef', 'ffgrg', 'gerg'),
+(67, 'tedrtg', 'thedtd', 'thth', 'wer'),
+(45, 'rtgedrtg', 'rgyed', 'vfzxcv', 'zvv'),
+(34, 'fgg', 'rgeghh', 'te', 'tyety'),
+(8, 'dfghd', 'dgh', 'dtgh', 'dghvm'),
+(2, 'dgvb', 'gfedtg', 'ged', 'ghedtg'),
+(67, 'gdhh', 'tyy', 'tyerty', 'ertrt');
 
 -- --------------------------------------------------------
 
@@ -69,7 +139,13 @@ CREATE TABLE `Second` (
 
 INSERT INTO `Second` (`No.`, `Name`, `Work`, `phone-no.`, `address`) VALUES
 (1, 'jaydeep', 'Developer', 123445, 'ahmedabad'),
-(2, 'asdfg', 'asdf', 123456, 'jgygvtfrddf');
+(2, 'asdfg', 'asdf', 123456, 'jgygvtfrddf'),
+(3, 'fgsdfhgd', 'srtsrtrt', 235445345, 'gtsgsdfgdtghdth'),
+(23, 'dtgh', 'rgyery', 123, 'wertrtwsrrg'),
+(34, 'gbetg', 'rtgeg', 3424545, 'rtertgegeg'),
+(54, 'dfggt', 'rgegerg', 5423525, 'rgsggdgdg'),
+(343, 'grgrg', 'fsfsfg', 545, 'erfaserfeerf'),
+(434, 'rtghdhdh', 'eryer', 3544354, 'ydfhdhdhdh');
 
 -- --------------------------------------------------------
 
@@ -85,6 +161,22 @@ CREATE TABLE `seventh` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `seventh`
+--
+
+INSERT INTO `seventh` (`ID`, `Name`, `Age`, `mobile`, `email`) VALUES
+(55, 'dvbdfgh', 11, 122345, 'gbtghrghrh'),
+(12, 'gege', 45, 45, 'tgegetgett'),
+(124, 'dfdfsr', 54, 123144, 'fgsfgsfgfg'),
+(3, 'gfwsfgrfg', 67, 67677, 'etyetyetyty'),
+(354, 'fgsdgsdrg', 23, 23, 'fgsrgsrger'),
+(234, 'rtgrgeg', 23, 8, 'fgsdfgdfgdg'),
+(3546, 'sfvhsuhfvus', 78, 78, 'sdffgsgsgfg'),
+(76, 'vxbxfgbfg', 76, 76, 'dfgbdfgdtbhh'),
+(345, 'fgg', 34, 5, 'dfgdghdtgh'),
+(788, 'scvsdf', 87, 87, 'sfvsdhfusdfu');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +189,32 @@ CREATE TABLE `sixth` (
   `email` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `performance` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sixth`
+--
+
+INSERT INTO `sixth` (`SR.no`, `Name`, `email`, `address`, `performance`) VALUES
+(123, 'rtgg', 'rtgrg', 'rgrgr', '33'),
+(34, 'fgsgd', 'gsfgs', 'fsgsfg', 'rttsats'),
+(454, 'rtwerg', 'rtgert', 'rtrt', 'rtwtwrt'),
+(244, 'dghgh', 'etgryg', 'ergtge', 'hnfnh'),
+(654, 'segfuyagfyg', 'dugfugf', 'erfwf', 'fgergr'),
+(434, 'dgbfgeg', 'rgge', 'rfggerg', '4523');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Tenth`
+--
+
+CREATE TABLE `Tenth` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(15) NOT NULL,
+  `email` varchar(15) NOT NULL,
+  `country` text NOT NULL,
+  `state` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -112,6 +230,22 @@ CREATE TABLE `third` (
   `sdfgouyy` varchar(15) NOT NULL,
   `errtdfgh` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `third`
+--
+
+INSERT INTO `third` (`sdfg`, `kghg`, `dfgh`, `sdfgouyy`, `errtdfgh`) VALUES
+(3, 'dfhdfhd', 'teherthe', 'tghetht', 45),
+(4, 'tghdth', 'eteth', 'etyhedh', 6),
+(5, 'dththth', 'thth', 'ethth', 6),
+(7, 'ghdth', 'tyth', 'tythet', 7),
+(12, 'fgsrg', 'wrgrg', 'rgerg', 76),
+(23, 'fgdge', 'erqwer', 'wertfwrt', 12),
+(34, 'fgsfg', 'wrfgrfg', 'fgfgr', 4),
+(78, 'tghdthd', 'tyeth', 'rtyety', 8),
+(345, 'dfwsf', 'erfwf', 'erfwf', 734),
+(768, 'tytyr', 'tyety', 'tyety', 56);
 
 -- --------------------------------------------------------
 
@@ -173,13 +307,13 @@ ALTER TABLE `trainee`
 -- AUTO_INCREMENT for table `Second`
 --
 ALTER TABLE `Second`
-  MODIFY `No.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `No.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
 
 --
 -- AUTO_INCREMENT for table `third`
 --
 ALTER TABLE `third`
-  MODIFY `sdfg` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sdfg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
 
 --
 -- AUTO_INCREMENT for table `trainee`
