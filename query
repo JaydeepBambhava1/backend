@@ -1,0 +1,247 @@
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 29-10-2021         |
+| crud               |
+| information_schema |
+| jaydeep            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| watch              |
++--------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [(none)]> create database practise;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> create database queries;
+Query OK, 1 row affected (0.000 sec)
+
+MariaDB [(none)]> use queries;
+Database changed
+MariaDB [queries]> create table product(id int,pname varchar(50),pcontact biginit(25),city varchar(50),PRIMARY KEY(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(25),city varchar(50),PRIMARY KEY(id))' at line 1
+MariaDB [queries]> create table product(id int,pname varchar(50),pcontact bigint(25),city varchar(50),PRIMARY KEY(id));
+Query OK, 0 rows affected (0.026 sec)
+
+MariaDB [queries]> insert into product values(1,'jaydeep','3412343','rajkot');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [queries]> insert into product values(2,'ranjeet','3412234','ahmedabad');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> insert into product values(3,'devarsh','34124534','ahmedabad');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> insert into product values(4,'ravi','341245634','ahmedabad');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> insert into product values(5,'shubham','3414554','baroda');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> SELECT * from product;
++----+---------+-----------+-----------+
+| id | pname   | pcontact  | city      |
++----+---------+-----------+-----------+
+|  1 | jaydeep |   3412343 | rajkot    |
+|  2 | ranjeet |   3412234 | ahmedabad |
+|  3 | devarsh |  34124534 | ahmedabad |
+|  4 | ravi    | 341245634 | ahmedabad |
+|  5 | shubham |   3414554 | baroda    |
++----+---------+-----------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [queries]> SELECT * from product where city = 'ahmedabad';
++----+---------+-----------+-----------+
+| id | pname   | pcontact  | city      |
++----+---------+-----------+-----------+
+|  2 | ranjeet |   3412234 | ahmedabad |
+|  3 | devarsh |  34124534 | ahmedabad |
+|  4 | ravi    | 341245634 | ahmedabad |
++----+---------+-----------+-----------+
+3 rows in set (0.000 sec)
+
+MariaDB [queries]> SELECT * from product where pname = 'ravi';
++----+-------+-----------+-----------+
+| id | pname | pcontact  | city      |
++----+-------+-----------+-----------+
+|  4 | ravi  | 341245634 | ahmedabad |
++----+-------+-----------+-----------+
+1 row in set (0.000 sec)
+
+MariaDB [queries]> SELECT * from product where city = 'baroda' AND city = 'rajkot';
+Empty set (0.001 sec)
+
+MariaDB [queries]> SELECT * from product where city = 'baroda' OR city = 'rajkot';
++----+---------+----------+--------+
+| id | pname   | pcontact | city   |
++----+---------+----------+--------+
+|  1 | jaydeep |  3412343 | rajkot |
+|  5 | shubham |  3414554 | baroda |
++----+---------+----------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [queries]> SELECT * from product where NOT city = 'baroda' ;
++----+---------+-----------+-----------+
+| id | pname   | pcontact  | city      |
++----+---------+-----------+-----------+
+|  1 | jaydeep |   3412343 | rajkot    |
+|  2 | ranjeet |   3412234 | ahmedabad |
+|  3 | devarsh |  34124534 | ahmedabad |
+|  4 | ravi    | 341245634 | ahmedabad |
++----+---------+-----------+-----------+
+4 rows in set (0.000 sec)
+
+MariaDB [queries]> SELECT * from product order by pcontact;
++----+---------+-----------+-----------+
+| id | pname   | pcontact  | city      |
++----+---------+-----------+-----------+
+|  2 | ranjeet |   3412234 | ahmedabad |
+|  1 | jaydeep |   3412343 | rajkot    |
+|  5 | shubham |   3414554 | baroda    |
+|  3 | devarsh |  34124534 | ahmedabad |
+|  4 | ravi    | 341245634 | ahmedabad |
++----+---------+-----------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [queries]> SELECT * from product order by pcontact, devarsh;
+ERROR 1054 (42S22): Unknown column 'devarsh' in 'order clause'
+MariaDB [queries]> SELECT * from product order by pname, devarsh;
+ERROR 1054 (42S22): Unknown column 'devarsh' in 'order clause'
+MariaDB [queries]> SELECT * from product order by pname, pname;
++----+---------+-----------+-----------+
+| id | pname   | pcontact  | city      |
++----+---------+-----------+-----------+
+|  3 | devarsh |  34124534 | ahmedabad |
+|  1 | jaydeep |   3412343 | rajkot    |
+|  2 | ranjeet |   3412234 | ahmedabad |
+|  4 | ravi    | 341245634 | ahmedabad |
+|  5 | shubham |   3414554 | baroda    |
++----+---------+-----------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [queries]> update product SET pname='ravi' WHERE city='baroda';
+Query OK, 1 row affected (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [queries]> DELETE from product where pname ='ravi';
+Query OK, 2 rows affected (0.005 sec)
+
+MariaDB [queries]> select top 3 * from product;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * from product' at line 1
+MariaDB [queries]> select * from product limit 3;
++----+---------+----------+-----------+
+| id | pname   | pcontact | city      |
++----+---------+----------+-----------+
+|  1 | jaydeep |  3412343 | rajkot    |
+|  2 | ranjeet |  3412234 | ahmedabad |
+|  3 | devarsh | 34124534 | ahmedabad |
++----+---------+----------+-----------+
+3 rows in set (0.000 sec)
+
+MariaDB [queries]> select * from product fetch first 3 rows only;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fetch first 3 rows only' at line 1
+MariaDB [queries]> select min(number) as smallestprice from product;
+ERROR 1054 (42S22): Unknown column 'number' in 'field list'
+MariaDB [queries]> select min(number) as SmallestPrice from product;
+ERROR 1054 (42S22): Unknown column 'number' in 'field list'
+MariaDB [queries]> select min(pcontact) as SmallestPrice from product;
++---------------+
+| SmallestPrice |
++---------------+
+|       3412234 |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> select max(pcontact) as largestPrice from product;
++--------------+
+| largestPrice |
++--------------+
+|     34124534 |
++--------------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> select count(id) from product;
++-----------+
+| count(id) |
++-----------+
+|         3 |
++-----------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> select avg(salary) from product;
++-------------+
+| avg(salary) |
++-------------+
+|  82741.0000 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> select sum(salary) from product;
++-------------+
+| sum(salary) |
++-------------+
+|      248223 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> select * from product where pname like 'j%'
+    -> select * from product where pname like 'j%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select * from product where pname like 'j%'' at line 2
+MariaDB [queries]> select * from product where pname like 'j%';
++----+---------+----------+--------+--------+
+| id | pname   | pcontact | city   | salary |
++----+---------+----------+--------+--------+
+|  1 | jaydeep |  3412343 | rajkot | 123518 |
++----+---------+----------+--------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [queries]> insert into product values(,'shreyash','3412','rajkot','12342');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''shreyash','3412','rajkot','12342')' at line 1
+MariaDB [queries]> insert into product values(5,'shreyash','3412','rajkot','12342');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [queries]> select * from product;
++----+----------+----------+-----------+--------+
+| id | pname    | pcontact | city      | salary |
++----+----------+----------+-----------+--------+
+|  1 | jaydeep  |  3412343 | rajkot    | 123518 |
+|  2 | ranjeet  |  3412234 | ahmedabad | 123472 |
+|  3 | devarsh  | 34124534 | ahmedabad |   1233 |
+|  5 | shreyash |     3412 | rajkot    |  12342 |
++----+----------+----------+-----------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [queries]> insert into product values(6,'abhi','341276','rajkot','122');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> insert into product values(7,'suresh','3241276','surat','18722');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [queries]> select * from product where city in ('rajkot','surat');
++----+----------+----------+--------+--------+
+| id | pname    | pcontact | city   | salary |
++----+----------+----------+--------+--------+
+|  1 | jaydeep  |  3412343 | rajkot | 123518 |
+|  5 | shreyash |     3412 | rajkot |  12342 |
+|  6 | abhi     |   341276 | rajkot |    122 |
+|  7 | suresh   |  3241276 | surat  |  18722 |
++----+----------+----------+--------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [queries]> select * from product where salary between 123 and 1213155;
++----+----------+----------+-----------+--------+
+| id | pname    | pcontact | city      | salary |
++----+----------+----------+-----------+--------+
+|  1 | jaydeep  |  3412343 | rajkot    | 123518 |
+|  2 | ranjeet  |  3412234 | ahmedabad | 123472 |
+|  3 | devarsh  | 34124534 | ahmedabad |   1233 |
+|  5 | shreyash |     3412 | rajkot    |  12342 |
+|  7 | suresh   |  3241276 | surat     |  18722 |
++----+----------+----------+-----------+--------+
+5 rows in set (0.000 sec)
+
+
