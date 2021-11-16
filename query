@@ -244,4 +244,61 @@ MariaDB [queries]> select * from product where salary between 123 and 1213155;
 +----+----------+----------+-----------+--------+
 5 rows in set (0.000 sec)
 
+MariaDB [queries]> select count(id), city from product group by salary;
++-----------+-----------+
+| count(id) | city      |
++-----------+-----------+
+|         1 | rajkot    |
+|         1 | ahmedabad |
+|         1 | rajkot    |
+|         1 | surat     |
+|         1 | ahmedabad |
+|         1 | rajkot    |
++-----------+-----------+
+6 rows in set (0.001 sec)
+
+MariaDB [queries]> select count(id), city from product group by city having count(id) > 5;
+Empty set (0.001 sec)
+
+MariaDB [queries]> select count(id), city from product group by city having count(id) > 0;
++-----------+-----------+
+| count(id) | city      |
++-----------+-----------+
+|         2 | ahmedabad |
+|         3 | rajkot    |
+|         1 | surat     |
++-----------+-----------+
+3 rows in set (0.001 sec)
+MariaDB [queries]> select product.id, product2.country from product right join product2 on product.id=product2.id order by product.id;
++------+---------+
+| id   | country |
++------+---------+
+|    1 | india   |
+|    2 | india   |
+|    3 | russia  |
+|    5 | usa     |
++------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [queries]> select product.id, product2.country, product.pname from product inner join product2 on product.id=product2.id;
++----+---------+----------+
+| id | country | pname    |
++----+---------+----------+
+|  1 | india   | jaydeep  |
+|  2 | india   | ranjeet  |
+|  3 | russia  | devarsh  |
+|  5 | usa     | shreyash |
++----+---------+----------+
+4 rows in set (0.001 sec)
+
+MariaDB [queries]> select product2.id, product.id from product2 left join product on product2.id=product.id order by product2.country;
++----+------+
+| id | id   |
++----+------+
+|  1 |    1 |
+|  2 |    2 |
+|  3 |    3 |
+|  5 |    5 |
++----+------+
+4 rows in set (0.001 sec)
 
