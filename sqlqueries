@@ -174,4 +174,144 @@ MariaDB [queries]> SELECT UPPER("Wrok done ");
 +---------------------+
 1 row in set (0.000 sec)
 
-MariaDB [queries]>
+MariaDB [School]> delimiter $$
+MariaDB [School]> create function Daily_wages(wage decimal(10,2))
+-> returns decimal(10,2)
+-> deterministic
+-> begin
+-> declare daily_wage decimal(10,2);
+-> set daily_wage = wage * 8;
+-> return(daily_wage);
+-> end $$
+Query OK, 0 rows affected (0.004 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> select Daily_wages(50);
++-----------------+
+| Daily_wages(50) |
++-----------------+|
+400.00 |
++-----------------+
+1 row in set (0.001 sec)
+======================TRIGGER===================
+MariaDB [School]> create trigger agecheck before insert on people for each row if NEW.age < 0
+-> then set NEW.age = 0; end if ; //
+Query OK, 0 rows affected (0.006 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> insert into people values (-20,'sid'),(30,'josh');
+Query OK, 2 rows affected (0.012 sec)
+Records: 2 Duplicates: 0 Warnings: 0
+MariaDB [School]> select * from people;
+
+
++------+------+
+| age | name |
++------+------+
+| 0 | sid |
+| 30 | josh |
++------+------+
+2 rows in set (0.001 sec)
+
+
+=================TRIGGER AFTER INSERT===================
+MariaDB [School]> CREATE TABLE members (id INT AUTO_INCREMENT primary key,name
+VARCHAR(100) NOT NULL, email VARCHAR(255),birthDate DATE);
+Query OK, 0 rows affected (0.014 sec)
+MariaDB [School]> CREATE TABLE reminders(id INT AUTO_INCREMENT,memberId
+INT,message VARCHAR(255) NOT NULL,PRIMARY KEY (id , memberId) );
+Query OK, 0 rows affected (0.013 sec)
+MariaDB [School]> DELIMITER $$
+MariaDB [School]> CREATE TRIGGER after_members_insert
+-> AFTER INSERT
+-> ON members FOR EACH ROW
+-> BEGIN
+-> IF NEW.birthDate IS NULL THEN
+-> INSERT INTO reminders(memberId, message)
+-> VALUES(new.id,CONCAT('Hi ', NEW.name, ', please update your date of birth.'));
+-> END IF;
+-> END$$
+Query OK, 0 rows affected (0.008 sec)
+MariaDB [School]> DELIMITER ;
+MariaDB [School]> INSERT INTO members(name, email, birthDate) VALUES('Sanjay' ,
+'sanjay@gmail.com', NULL);
+Query OK, 1 row affected (0.006 sec)
+MariaDB [School]> SELECT * FROM reminders;+----+----------+----------------------------------------------------+
+| id | memberId | message
+|
++----+----------+----------------------------------------------------+
+| 1 |
+1 | Hi Sanjay, please update your date of birth. |
++----+----------+----------------------------------------------------+
+1 row in set (0.001 sec)
+==========UPDATE BEFORE======================
+MariaDB [School]> CREATE TABLE person (name varchar(45), age int);
+Query OK, 0 rows affected (0.010 sec)
+MariaDB [School]> INSERT INTO person VALUES ('Matthew', 25), ('Mark', 20);
+Query OK, 2 rows affected (0.003 sec)
+Records: 2 Duplicates: 0 Warnings: 0
+MariaDB [School]>
+MariaDB [School]>
+MariaDB [School]> delimiter //
+MariaDB [School]> CREATE TRIGGER person_bu BEFORE UPDATE
+-> ON person
+-> FOR EACH ROW
+-> IF NEW.age < 18 THEN
+-> SIGNAL SQLSTATE '50002' SET MESSAGE_TEXT = 'Person must be older than 18.' ;
+-> END IF; //
+Query OK, 0 rows affected (0.005 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> UPDATE person SET age = 17 WHERE name = 'manan';
+Query OK, 0 rows affected (0.002 sec)
+Rows matched: 0 Changed: 0 Warnings: 0
+MariaDB [School]> UPDATE person SET age = 17 WHERE name = 'mahek';
+ERROR 1644 (50002): Person must be older than 18.
+=============AFTER UPDATE=============
+MariaDB [School]> CREATE TABLE average_age (age int);
+Query OK, 0 rows affected (0.016 sec)
+MariaDB [School]> delimiter //
+MariaDB [School]> CREATE TRIGGER person_au AFTER UPDATE
+-> ON person
+-> FOR EACH ROW
+-> UPDATE average_age SET average = (SELECT AVG(age) FROM person); //
+Query OK, 0 rows affected (0.006 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> UPDATE person SET age = 21 WHERE name = 'mahek' ;
+ERROR 1054 (42S22): Unknown column 'average' in 'field list'
+MariaDB [School]> UPDATE person SET age = 21 WHERE name = 'manan' ;
+Query OK, 0 rows affected (0.001 sec)Rows matched: 0 Changed: 0 Warnings: 0
+=============BEFORE DELETE============
+MariaDB [School]> CREATE TABLE person_archive (name varchar(45), age int);
+Query OK, 0 rows affected (0.016 sec)
+MariaDB [School]> delimiter //
+MariaDB [School]> CREATE TRIGGER person_bd BEFORE DELETE
+-> ON person
+-> FOR EACH ROW
+-> INSERT INTO person_archive (name, age)
+-> VALUES (OLD.name, OLD.age); //
+Query OK, 0 rows affected (0.005 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> DELETE FROM person WHERE name = 'manan';
+Query OK, 0 rows affected (0.003 sec)
+MariaDB [School]> DELETE FROM person WHERE name = 'mahek';
+Query OK, 1 row affected (0.004 sec)
+MariaDB [School]> Select * from person_archive;
++------+------+
+| name | age |
++------+------+
+| Mark | 20 |
++------+------+
+1 row in set (0.001 sec)
+==========AFTER DELETE====================
+MariaDB [School]> delimiter //
+MariaDB [School]> CREATE TRIGGER person_ad AFTER DELETE
+-> ON person
+-> FOR EACH ROW
+-> UPDATE average_age SET average = (SELECT AVG(person.age) FROM person); //
+Query OK, 0 rows affected (0.006 sec)
+MariaDB [School]> delimiter ;
+MariaDB [School]> DELETE FROM person WHERE name = 'manan';
+Query OK, 0 rows affected (0.003 sec)
+MariaDB [School]> Select * from average_age
+-> ;
+Empty set (0.001 sec)
+MariaDB [School]> Select * from average_age ;
+Empty set (0.001 sec)
