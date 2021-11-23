@@ -18,62 +18,93 @@
 <?php include "header.php"  ; 
      include "connection.php";
       ?>
+
+
 <body>
-    <form method="post">
-    <div class="container mt-10 pt-2 pb-3" style="width:40%;border: black solid 2px; margin-top:230px;">
-	<h3 class=" mb-3" style="border-bottom:5px solid green; width: 20%;">Log in</h3>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-   
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label"><font style="color:red; border:none; font-size:20px;"></font><a href="register.php" style="text-decoration:none;">Register here</a></label>
-    <div id="emailHelp" class="form-text"></div>
-  </div>
-  
-  
-  <input type="submit" class="btn btn-success" name="insert" value="Submit">
-
-</form>
-</div>
 
 
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.png"
+                        class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form method="post" action="#">
+
+                        <!-- user input -->
+                        <div class="form-outline mb-4">
+                            <input type="name" id="form3Example3" class="form-control form-control-lg"
+                                placeholder="Enter username" />
+                            <label class="form-label" for="form3Example3">username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Enter password" />
+                            <label class="form-label" for="form3Example4">Password</label>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#!" class="text-body">Forgot password?</a>
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                        </div>
+                        <input href="index.php" type="submit" class ="btn btn-success" name="insert" value="submit">
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <?php
+ include "connection.php"
+
+?>
 
 </body>
+
 </html>
 
 <?php
 //session_start();
-
 include "connection.php";
-
 if(isset($_POST['insert']))
 {
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-  include "connection.php";
+$username=$_POST['username'];
+$password=$_POST['password'];
 
-    $sql="select email,password from user where email='$email' and password='$password'";
-    $query=mysqli_query($con,$sql);
-    
-    if(mysqli_num_rows($query)>0)
-    {
-        session_start();
-        $_SESSION['email']=$email;
-        header("Location:index.php");
-        echo "welcome";
-    }
-    else
-    {
-      echo "Authentication Failed";
-    }
+
+
+echo $sql="select username,password from admin where username='$username' and password='$password'";
+$query=mysqli_query($con,$sql);
+
+if(mysqli_num_rows($query)>0)
+{
+//session_start();
+//$_SESSION['username']=$username;
+//header("Location:index.php");
+echo "welcome";
+}
+else
+{
+echo "Authentication Failed";
+}
 mysqli_close($con);
-  }
+//header('Location:category.php');
+}
 
 ?>

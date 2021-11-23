@@ -73,7 +73,7 @@
 										<li><a href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
 										
 								<li class="checkout">
-									<a href="#">
+									<a href="cart.php">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 										<span id="checkout_items" class="checkout_items">2</span>
 									</a>

@@ -70,15 +70,15 @@
 						<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 							<div class="single_product_thumbnails">
 								<ul>
-									<li><img src="images/single_1_thumb.jpg" alt="" data-image="images/single_1.jpg"></li>
-									<li class="active"><img src="images/single_2_thumb.jpg" alt="" data-image="images/single_2.jpg"></li>
-									<li><img src="images/single_3_thumb.jpg" alt="" data-image="images/single_3.jpg"></li>
+									<li><img src="images/item-1.jpg" alt="" data-image="images/item-1.jpg"></li>
+									<li class="active"><img src="images/item-1.jpg" alt="" data-image="images/item-1.jpg"></li>
+									
 								</ul>
 							</div>
 						</div>
 						<div class="col-lg-9 image_col order-lg-2 order-1">
 							<div class="single_product_image">
-								<div class="single_product_image_background" style="background-image:url(images/single_2.jpg)"></div>
+								<div class="single_product_image_background" style="background-image:url(images/item-1.jpg)"></div>
 							</div>
 						</div>
 					</div>
@@ -87,7 +87,7 @@
 			<div class="col-lg-5">
 				<div class="product_details">
 					<div class="product_details_title">
-						<h2>Pocket cotton sweatshirt</h2>
+						<h2>Casual watch</h2>
 						<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 					</div>
 					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
@@ -102,14 +102,7 @@
 						<li><i class="fa fa-star" aria-hidden="true"></i></li>
 						<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 					</ul>
-					<div class="product_color">
-						<span>Select Color:</span>
-						<ul>
-							<li style="background: #e54e5d"></li>
-							<li style="background: #252525"></li>
-							<li style="background: #60b3f3"></li>
-						</ul>
-					</div>
+					
 					<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 						<span>Quantity:</span>
 						<div class="quantity_selector">
@@ -154,27 +147,27 @@
 									<h4>Description</h4>
 								</div>
 								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
+									<h2>casual watch</h2>
 									<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 								</div>
 								<div class="tab_image">
-									<img src="images/desc_1.jpg" alt="">
+									<img src="images/item-4.jpg" alt="">
 								</div>
 								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
+									<h2>gold watch</h2>
 									<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 								</div>
 							</div>
 							<div class="col-lg-5 offset-lg-2 desc_col">
 								<div class="tab_image">
-									<img src="images/desc_2.jpg" alt="">
+									<img src="images/item-2.jpg" alt="">
 								</div>
 								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
+									<h2>watches</h2>
 									<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 								</div>
 								<div class="tab_image desc_last">
-									<img src="images/desc_3.jpg" alt="">
+									<img src="images/item-33.jpg" alt="">
 								</div>
 							</div>
 						</div>
@@ -189,7 +182,6 @@
 									<h4>Additional Information</h4>
 								</div>
 								<p>COLOR:<span>Gold, Red</span></p>
-								<p>SIZE:<span>L,M,XL</span></p>
 							</div>
 						</div>
 					</div>

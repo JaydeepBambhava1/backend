@@ -11,10 +11,10 @@ $category = $_POST['pages'];
 $image_loc = $_FILES['image']['tmp_name'];
 $image_name = $_FILES['image']['name'];
 
-$img_des = "uploadimage/". $image_name;
+$img_des = "images/". $image_name;
 
 
-move_uploaded_file($image_loc, "uploadimage/".$image_name);
+move_uploaded_file($image_loc, "images/".$image_name);
 //print_r($pr_image);
 
 //insert product

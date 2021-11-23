@@ -48,7 +48,7 @@
 
   <option value="men">Men</option>
   <option value="women">Women</option>
-  <option value="accessories">Accessories</option>
+  <option value="child">child</option>
 </select>
 </div>
 <button class="bg-success fs-4 fw-bold my-3 form-control text-white" name="submit">Add</button>

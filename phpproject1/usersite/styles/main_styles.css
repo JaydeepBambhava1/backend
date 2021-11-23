@@ -537,7 +537,7 @@ section
 .main_nav_container
 {
 	width: 100%;
-	background: #FFFFFF;
+	background: #d16c6c;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
 }
 .navbar
@@ -636,6 +636,7 @@ section
 .hamburger_container
 {
 	display: none;
+	color: #db5246;
 	margin-left: 40px;
 }
 .hamburger_container i
